@@ -171,7 +171,7 @@ set_target_properties(SkyX PROPERTIES VERSION ${SKYX_VERSION} SOVERSION ${SKYX_V
 set_target_properties(SkyX PROPERTIES COMPILE_DEFINITIONS SKYX_LIB)
 set_target_properties(SkyX PROPERTIES SOLUTION_FOLDER Dependencies)
 
-target_link_libraries(SkyX ${OGRE_LIBRARIES} ${Boost_LIBRARIES})
+target_link_libraries(SkyX ${OGRE_LIBRARIES} ${Boost_SYSTEM_LIBRARY})
 
 # specify a precompiled header to use
 # use_precompiled_header(SkyX
