@@ -105,9 +105,9 @@ if(APPLE)
     set(RUNPATH "${CMAKE_CURRENT_SOURCE_DIR}/RunPath")
 endif(APPLE)
 
-if(NOT ((${OGRE_VERSION} VERSION_EQUAL "1.10.0") OR (${OGRE_VERSION} VERSION_GREATER "1.10.0")))
-    message(SEND_ERROR "You need Ogre 1.10 'Xalafu' to build this.")
-endif()
+# if(NOT ((${OGRE_VERSION} VERSION_EQUAL "1.10.0") OR (${OGRE_VERSION} VERSION_GREATER "1.10.0")))
+#    message(SEND_ERROR "You need Ogre 1.10 'Xalafu' to build this.")
+# endif()
 
 include_directories(${OGRE_INCLUDE_DIRS})
 include_directories(${Boost_INCLUDE_DIR})
@@ -161,7 +161,7 @@ set(SKYX_VERSION_PATCH "0")
 set(SKYX_VERSION "${SKYX_VERSION_MAJOR}.${SKYX_VERSION_MINOR}.${SKYX_VERSION_PATCH}")
 
 add_library(SkyX SHARED ${HEADER_FILES} ${SOURCE_FILES})
-set(LIBRARY_OUTPUT_PATH  ../../lib)
+#set(LIBRARY_OUTPUT_PATH  ../../lib)
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/VClouds")
@@ -188,6 +188,8 @@ endif(MSVC_IDE)
 if(WIN32)
 	install(TARGETS SkyX
 		RUNTIME DESTINATION bin
+		ARCHIVE DESTINATION lib
+		LIBRARY DESTINATION lib
 		CONFIGURATIONS Debug Release RelWithDebInfo MinSizeRel)
 endif(WIN32)
 
