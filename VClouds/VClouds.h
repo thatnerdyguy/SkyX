@@ -144,7 +144,7 @@ namespace SkyX { namespace VClouds{
 		/** Simple constructor
 			@param sm Scene manager 
 		 */
-		VClouds(Ogre::SceneManager *sm);
+		VClouds(Ogre::SceneManager *sm, Ogre::SceneNode* rootNode);
 
 		/** Destructor
 		 */
@@ -502,6 +502,14 @@ namespace SkyX { namespace VClouds{
 			return mCamerasData;
 		}
 
+		/** Get Skyx system root node
+		@return SkyX root node
+		*/
+		inline Ogre::SceneNode* getRootNode()
+		{
+			return mSkyXRoot;
+		}
+
 	private:
 		/// Has been create(...) already called?
 		bool mCreated;
@@ -575,6 +583,9 @@ namespace SkyX { namespace VClouds{
 
 		/// Cameras data
 		std::vector<CameraData> mCamerasData;
+
+		// SkyX system root node
+		Ogre::SceneNode* mSkyXRoot;
 	};
 
 }}

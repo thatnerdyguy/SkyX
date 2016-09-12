@@ -30,11 +30,7 @@ namespace SkyX
 	MeshManager::MeshManager(SkyX *s)
 		: mSkyX(s)
 		, mCreated(false)
-#if (OGRE_VERSION < ((1 << 16) | (9 << 8) | 0))
-			, mMesh(0)
-#else
-			, mMesh()
-#endif
+		, mMesh()
         , mSubMesh(0)
         , mEntity(0)
         , mVertexBuffer(0)
@@ -111,7 +107,7 @@ namespace SkyX
 		mEntity->setCastShadows(false);
 		mEntity->setRenderQueueGroup(mSkyX->getRenderQueueGroups().skydome);
 
-		mSceneNode = mSkyX->getSceneManager()->getRootSceneNode()->createChildSceneNode();
+		mSceneNode = mSkyX->getRootNode()->createChildSceneNode();
 		mSceneNode->showBoundingBox(false);
         mSceneNode->attachObject(mEntity);
 

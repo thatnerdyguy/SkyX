@@ -63,7 +63,7 @@ namespace SkyX { namespace VClouds
 		mNumberOfBlocks = NumberOfBlocks;
 		mNa = Na; mNb = Nb; mNc = Nc;
 
-		mSceneNode = mVClouds->getSceneManager()->getRootSceneNode()->createChildSceneNode();
+		mSceneNode = mVClouds->getRootNode()->createChildSceneNode();
 		_createGeometry();
 
 		mCreated = true;

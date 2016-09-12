@@ -49,6 +49,8 @@ namespace SkyX
 		, mTimeMultiplier(0.1f)
 		, mTimeOffset(0.0f)
 	{
+		mSkyXRoot = mSceneManager->getRootSceneNode()->createChildSceneNode();
+
 		// Need to be instanced here, when SkyX::mSceneManager is valid
 		mVCloudsManager = new VCloudsManager(this);
 	}
@@ -68,6 +70,10 @@ namespace SkyX
 		{
 			delete mController;
 		}
+
+		mSkyXRoot->detachAllObjects();
+		mSkyXRoot->getParentSceneNode()->removeAndDestroyChild(mSkyXRoot->getName());
+		mSkyXRoot = 0;
 	}
 
 	void SkyX::create()

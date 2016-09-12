@@ -27,8 +27,9 @@ http://www.gnu.org/copyleft/lesser.txt.
 
 namespace SkyX { namespace VClouds
 {
-	VClouds::VClouds(Ogre::SceneManager *sm)
+	VClouds::VClouds(Ogre::SceneManager *sm, Ogre::SceneNode* root)
 		: mSceneManager(sm)
+		, mSkyXRoot(root)
 		, mCamera(0)
 		, mCreated(false)
 		, mGeometrySettings(GeometrySettings())
@@ -51,13 +52,8 @@ namespace SkyX { namespace VClouds
 		, mGeometryManager(new GeometryManager(this))
 		, mLightningManager(new LightningManager(this))
 		, mCamerasData(std::vector<CameraData>())
-#if (OGRE_VERSION < ((1 << 16) | (9 << 8) | 0))
- 		, mVolCloudsMaterial(Ogre::MeshPtr())
- 		, mVolCloudsLightningMaterial(Ogre::MeshPtr())
-#else
 		, mVolCloudsMaterial(Ogre::MaterialPtr())
 		, mVolCloudsLightningMaterial(Ogre::MaterialPtr())
-#endif
 	{
 	}
 

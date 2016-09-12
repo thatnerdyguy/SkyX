@@ -205,7 +205,7 @@ namespace SkyX { namespace VClouds
 			return static_cast<Lightning*>(NULL);
 		}
 
-		Ogre::SceneNode* sn = mVClouds->getSceneManager()->getRootSceneNode()->createChildSceneNode();
+		Ogre::SceneNode* sn = mVClouds->getRootNode()->createChildSceneNode();
 		sn->setPosition(p);
 
 		Lightning* lightning = new Lightning(mVClouds->getSceneManager(), sn, Ogre::Vector3(0,0,0), d, l, div, 3, mLightningTimeMultiplier, mVClouds->getGeometrySettings().Radius/9500);

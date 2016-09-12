@@ -343,6 +343,14 @@ namespace SkyX
 			return mTimeOffset;
 		}
 
+		/** Get Skyx system root node
+		@return SkyX root node
+		*/
+		inline Ogre::SceneNode* getRootNode()
+		{
+			return mSkyXRoot;
+		}
+
 	private:
 		/// Is SkyX created?
 		bool mCreated;
@@ -390,6 +398,9 @@ namespace SkyX
 		Ogre::Real mTimeMultiplier;
 		/// Time offset
 		Ogre::Real mTimeOffset;
+
+		// SkyX system root node
+		Ogre::SceneNode* mSkyXRoot;
 	};
 }
 
