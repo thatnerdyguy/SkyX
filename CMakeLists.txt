@@ -179,12 +179,12 @@ target_link_libraries(SkyX ${OGRE_LIBRARIES} ${Boost_SYSTEM_LIBRARY})
 #  "${CMAKE_CURRENT_SOURCE_DIR}/Prerequisites.cpp"
 #)
 
-if(MSVC_IDE)
-	add_custom_command(TARGET SkyX PRE_BUILD
-		COMMAND if not exist ..\\..\\RunPath\\bin mkdir ..\\..\\RunPath\\bin)
-	add_custom_command(TARGET SkyX POST_BUILD
-		COMMAND copy \"$(TargetPath)\" ..\\..\\RunPath\\bin)
-endif(MSVC_IDE)
+#if(MSVC_IDE)
+#	add_custom_command(TARGET SkyX PRE_BUILD
+#		COMMAND if not exist ..\\..\\RunPath\\bin mkdir ..\\..\\RunPath\\bin)
+#	add_custom_command(TARGET SkyX POST_BUILD
+#		COMMAND copy \"$(TargetPath)\" ..\\..\\RunPath\\bin)
+#endif(MSVC_IDE)
 if(WIN32)
 	install(TARGETS SkyX
 		RUNTIME DESTINATION bin
