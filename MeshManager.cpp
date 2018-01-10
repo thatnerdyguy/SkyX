@@ -33,9 +33,9 @@ namespace SkyX
 		, mMesh()
         , mSubMesh(0)
         , mEntity(0)
-        , mVertexBuffer(0)
+        , mVertexBuffer()
 		, mVertices(0)
-        , mIndexBuffer(0)
+        , mIndexBuffer()
 	    , mSceneNode(0)
 		, mSteps(70)
 		, mCircles(95)
@@ -64,7 +64,7 @@ namespace SkyX
 		mSceneNode->getParentSceneNode()->removeAndDestroyChild(mSceneNode->getName());
 		mSceneNode = 0;
 
-		Ogre::MeshManager::getSingleton().remove("SkyXMesh");
+		Ogre::MeshManager::getSingleton().remove("SkyXMesh", SKYX_RESOURCE_GROUP);
 		mSkyX->getSceneManager()->destroyEntity(mEntity);
 
 		mMesh.setNull();

@@ -84,16 +84,22 @@ namespace SkyX
 		// SkyX_Starfield.png
 		static_cast<Ogre::MaterialPtr>(Ogre::MaterialManager::getSingleton().getByName(getSkydomeMaterialName()))
 			->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setHardwareGammaEnabled(gammaCorrection);
+		auto starfieldTexture = static_cast<Ogre::MaterialPtr>(Ogre::MaterialManager::getSingleton().getByName(getSkydomeMaterialName()))
+			->getTechnique(0)->getPass(0)->getTextureUnitState(0)->_getTexturePtr();
 
 		// SkyX_Moon.png and SkyX_MoonHalo.png
 		static_cast<Ogre::MaterialPtr>(Ogre::MaterialManager::getSingleton().getByName(getMoonMaterialName()))
 			->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setHardwareGammaEnabled(gammaCorrection);
+		auto moonTexture = static_cast<Ogre::MaterialPtr>(Ogre::MaterialManager::getSingleton().getByName(getMoonMaterialName()))
+			->getTechnique(0)->getPass(0)->getTextureUnitState(0)->_getTexturePtr();
 		static_cast<Ogre::MaterialPtr>(Ogre::MaterialManager::getSingleton().getByName(getMoonMaterialName()))
 			->getTechnique(0)->getPass(0)->getTextureUnitState(1)->setHardwareGammaEnabled(gammaCorrection);
+		auto moonhaloTexture = static_cast<Ogre::MaterialPtr>(Ogre::MaterialManager::getSingleton().getByName(getMoonMaterialName()))
+			->getTechnique(0)->getPass(0)->getTextureUnitState(1)->_getTexturePtr();
 
-		_setTextureHWGammaCorrection("SkyX_Starfield.png", gammaCorrection);
-		_setTextureHWGammaCorrection("SkyX_Moon.png", gammaCorrection);
-		_setTextureHWGammaCorrection("SkyX_MoonHalo.png", gammaCorrection);
+		_setTextureHWGammaCorrection(starfieldTexture, gammaCorrection);
+		_setTextureHWGammaCorrection(moonTexture, gammaCorrection);
+		_setTextureHWGammaCorrection(moonhaloTexture, gammaCorrection);
 	}
 
 	void GPUManager::setGpuProgramParameter(const GpuProgram &GpuP,  const Ogre::String &Name, const int &Value, const bool& UpdateGroundPasses)
@@ -345,10 +351,8 @@ namespace SkyX
 		return (mSkyX->getLightingMode() == SkyX::LM_LDR) ? "SkyX_Skydome_" + starfield + "LDR" : "SkyX_Skydome_" + starfield + "HDR";
 	}
 
-	void GPUManager::_setTextureHWGammaCorrection(const Ogre::String& n, const bool& g)
+	void GPUManager::_setTextureHWGammaCorrection(const Ogre::TexturePtr& tex, const bool& g)
 	{
-		Ogre::TexturePtr tex = Ogre::TextureManager::getSingleton().getByName(n);
-
 		if (!tex.isNull())
 		{
 			if (g)

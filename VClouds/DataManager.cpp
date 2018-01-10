@@ -61,7 +61,7 @@ namespace SkyX { namespace VClouds
 
 		for (int k = 0; k < 2; k++)
 		{
-			Ogre::TextureManager::getSingleton().remove(mVolTextures[k]->getName());
+			Ogre::TextureManager::getSingleton().remove(mVolTextures[k]->getHandle());
 			mVolTextures[k].setNull();
 		}
 

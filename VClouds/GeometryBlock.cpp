@@ -100,7 +100,7 @@ namespace SkyX { namespace VClouds
 			return;
 		}
 
-		Ogre::MeshManager::getSingleton().remove(mMesh->getName());
+		Ogre::MeshManager::getSingleton().remove(mMesh->getHandle());
 		mVClouds->getSceneManager()->destroyEntity(mEntity);
 
 		mMesh.setNull();

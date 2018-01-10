@@ -128,7 +128,7 @@ namespace SkyX
 		    @param n Texture name
 			@param g True to enable gamma correction, false to disable it
 		 */
-		void _setTextureHWGammaCorrection(const Ogre::String& n, const bool& g);
+		void _setTextureHWGammaCorrection(const Ogre::TexturePtr& tex, const bool& g);
 
 		/// Skydome material
 		Ogre::MaterialPtr mSkydomeMaterial;
