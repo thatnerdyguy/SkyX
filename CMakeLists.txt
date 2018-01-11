@@ -160,6 +160,9 @@ set(SKYX_VERSION_MINOR "4")
 set(SKYX_VERSION_PATCH "0")
 set(SKYX_VERSION "${SKYX_VERSION_MAJOR}.${SKYX_VERSION_MINOR}.${SKYX_VERSION_PATCH}")
 
+message(STATUS "OGRE_LIBRARY_DIRS: ${OGRE_LIBRARY_DIRS}")
+link_directories(${OGRE_LIBRARY_DIRS})
+
 add_library(SkyX SHARED ${HEADER_FILES} ${SOURCE_FILES})
 #set(LIBRARY_OUTPUT_PATH  ../../lib)
 
@@ -171,7 +174,6 @@ set_target_properties(SkyX PROPERTIES VERSION ${SKYX_VERSION} SOVERSION ${SKYX_V
 set_target_properties(SkyX PROPERTIES COMPILE_DEFINITIONS SKYX_LIB)
 set_target_properties(SkyX PROPERTIES SOLUTION_FOLDER Dependencies)
 
-link_directories(${OGRE_LIBRARY_DIRS})
 target_link_libraries(SkyX ${OGRE_LIBRARIES} ${Boost_SYSTEM_LIBRARY})
 
 # specify a precompiled header to use
