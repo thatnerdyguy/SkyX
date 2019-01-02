@@ -599,7 +599,7 @@ namespace SkyX { namespace VClouds
 		buffer->lock(Ogre::HardwareBuffer::HBL_DISCARD);
 		const Ogre::PixelBox &pb = buffer->getCurrentLock();
 
-		Ogre::uint32 *pbptr = static_cast<Ogre::uint32*>(pb.data);
+		auto pbptr = reinterpret_cast<Ogre::uint32* const>(pb.data);
 		size_t x, y, z;
 
 		for (z=pb.front; z<pb.back; z++) 
@@ -608,7 +608,7 @@ namespace SkyX { namespace VClouds
             {
                 for (x=pb.left; x<pb.right; x++)
 				{
-					Ogre::PixelUtil::packColour(c[x][y][z].dens/* TODO!!!! */, c[x][y][z].light, 0, 0, pb.format, &pbptr[x]);
+					Ogre::PixelUtil::packColour(c[x][y][z].dens/* TODO!!!! */, c[x][y][z].light, 0, 0, pb.format, (void*)&pbptr[x]);
                 } 
                 pbptr += pb.rowPitch;
             }
